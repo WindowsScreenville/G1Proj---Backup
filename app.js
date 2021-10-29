@@ -29,10 +29,7 @@ db.connect((err) => {
     }
 })
 
-app.get("/", (req, res) => {
-    // res.send("<h1>BISU Main Campus Contact Tracing System</h1>")
-    res.render("index")
-});
+app.use('/', require('./routes/pages'))
 
 app.listen(3000, () => {
     console.log("Server started in Port 3000.");

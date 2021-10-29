@@ -1,5 +1,119 @@
 body {
     font-family: 'Montserrat';
-    background: linear-gradient(rgb(122, 194, 236) 50%, rgb(87, 151, 235));
+    width: 100%!important;
+    height: 100%!important;
+    background: linear-gradient(#9DCDF6, #B89EFF);
+}
+
+body p {
+    font-size: small;
+}
+
+body main {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+.logo-header {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    height: max-content;
+    padding-top: 3em;
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("./images/bisu-logo.png");
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+.title {
+    color: #0B3356;
+}
+
+.subtext {
+    margin-top: 0.5em;
+    color: white;
+    font-size: small;
+    font-weight: normal;
+}
+
+.login {
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    max-width: 30em;
+    height: max-content;
+}
+
+.input {
+    font-family: 'Montserrat';
+    height: 2.7em;
+    width: 97%;
+    min-width: 10em;
+    margin-bottom: 1.2em;
+    padding-left: 0.8em;
+    border-radius: 25em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+}
+
+.login-button {
+    left: 50em;
+    width: 6em;
+    margin-top: 1em;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+    font-size: large;
+    padding: 0.3em;
+    border-radius: 25em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+    background-color:#3368E2;
+}
+
+.login-button:hover {
+    background-color: rgb(204, 167, 1);
+}
+
+.signup {
+    margin-top: 3em;
+    font-size: small;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+    width: max-content;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
+}
+
+.signup-button {
+    border-radius: 25em;
+    margin-left: 0.5em;
+    padding: 0.2em 0.7em 0.2em 0.7em;
+    width: max-content;
+    border-style: solid;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: small;
+    color: rgb(20, 20, 20);
+    border-color: rgb(20, 20, 20);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.signup-button:hover {
+    color: rgb(105, 105, 105);
+    border-color: rgb(105, 105, 105);
 }
 
