@@ -9,4 +9,8 @@ router.get('/signup', (req, res) => {
     res.render('signup-almerol');
 })
 
+router.get('/ques', (req, res) => {
+    res.render('questionnaire-tandoc');
+})
+
 module.exports = router;
