@@ -13,4 +13,8 @@ router.get('/ques', (req, res) => {
     res.render('questionnaire-tandoc');
 })
 
+router.get('/home', (req, res) => {
+    res.render('home-tandoc');
+})
+
 module.exports = router;
