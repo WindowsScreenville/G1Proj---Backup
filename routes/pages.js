@@ -17,4 +17,7 @@ router.get('/home', (req, res) => {
     res.render('home-tandoc');
 })
 
+router.get('/admin', (req, res) => {
+    res.render('admin-tandoc');
+})
 module.exports = router;
