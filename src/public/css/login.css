@@ -1,0 +1,242 @@
+* {
+    font-family: 'Montserrat';
+}
+
+body {
+    position: relative;
+    align-content: center;
+    justify-content: center;
+}
+
+main {
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    font-family: 'Montserrat';
+    width: 100%!important;
+    height: max-content;
+    background: linear-gradient(#9DCDF6, #B89EFF);
+    /* padding-bottom: 5em; */
+}
+
+main p {
+    font-size: small;
+}
+
+.banner-top {
+    height: 2.5em;
+    width: 100%;
+    background-color: rgb(56, 56, 56);
+    border-radius: 0em 0em 50em 0em;
+    margin-bottom: 3em;
+}
+
+.banner-bottom {
+    height: 2.5em;
+    width: 100%;
+    background-color: rgb(56, 56, 56);
+    border-radius: 50em 0em 0em 0em;
+}
+
+.logo-header {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    height: max-content;
+    padding-top: 2em;
+}
+
+.logo {
+    width: 5em;
+    height: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("../images/bisu-logo.png");
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+.title {
+    color: #0B3356;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtext {
+    margin-top: 0.5em;
+    margin-bottom: 3em;
+    color: white;
+    font-size: small;
+    font-weight: normal;
+}
+
+.login {
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    max-width: 35em;
+    height: max-content;
+}
+
+.alert-notif {
+    min-width: 10em;
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    font-size: small;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(253, 115, 115);
+    border-radius: 5em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+    margin-bottom: 1.5em;
+}
+
+.success-notif {
+    min-width: 10em;
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    text-align: center;
+    font-size: small;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: rgb(56, 194, 102);
+    border-radius: 5em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+}
+
+.subtext-username {
+    color: rgb(1, 78, 36);
+    text-align: center;
+    font-size: x-small; 
+    font-style: italic;
+    font-weight: 400;
+}
+
+.username {
+    color: rgb(1, 78, 36);
+    text-align: center;
+    font-size: smaller; 
+    font-style: italic;
+    font-weight: 600;
+}
+
+.input {
+    font-family: 'Montserrat';
+    align-items: center;
+    display: flex;
+    height: 2.5em;
+    width: 97%;
+    min-width: 10em;
+    margin-bottom: 1em;
+    padding: 0.3em 0.3em;
+    border-radius: 25em;
+    border-style: none;
+    background-color: white;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+}
+
+.input i {
+    position: relative;
+}
+
+.input-field {
+    font-size: medium;
+    font-weight: 600;
+    height: 100%;
+    width: 100%;
+    padding-left: 0.5em;
+    border-radius: 25em;
+    border-style: none;
+}
+
+.username-icon {
+    height: 100%;
+    width: 1.6em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+    background-image: url("../images/profile.png");
+    background-size: 1.2em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 0, 0);
+}
+
+.password-icon {
+    height: 100%;
+    width: 1.6em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+    background-image: url("../images/password.png");
+    background-size: 1.2em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 0, 0);
+}
+
+.login-button {
+    left: 50em;
+    width: 100%;
+    height: 3em;
+    margin-top: 1em;
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+    font-size: large;
+    padding: 0.3em;
+    border-radius: 25em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+    background-color:#3368E2;
+}
+
+.login-button:hover {
+    background-color: rgb(204, 167, 1);
+}
+
+.register {
+    margin-top: 3em;
+    font-size: small;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8em;
+    width: max-content;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
+}
+
+.register-button {
+    border-radius: 25em;
+    margin-left: 0.5em;
+    padding: 0.2em 0.7em 0.2em 0.7em;
+    width: max-content;
+    border-style: solid;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: small;
+    color: rgb(20, 20, 20);
+    border-color: rgb(20, 20, 20);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.register-button:hover {
+    color: rgb(105, 105, 105);
+    border-color: rgb(105, 105, 105);
+}
+

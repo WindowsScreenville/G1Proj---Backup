@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/fillup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <title>BISU MC Questionnaire</title>
+</head>
+<body>
+    <main>
+        <div class = "banner-top"></div>
+        <div class = "logo-header">
+            <div class = "logo"></div>
+            <div class = "title">Symptom Monitoring Checklist</div>
+            <div class = "subtext"><b>PURPOSE OF VISITING:</b> Before you proceed in answering the health assessment form, let us know first your purpose in visiting the campus.</div>
+        </div>
+
+        <form class = "container" action = "/" method = "POST">
+
+            <div class = "purpose">
+                <div style = "color: rgb(182, 181, 181); background-color: rgb(56, 56, 56); border-radius: 2em 2em 0 0; padding-top: 0.3em;
+                padding-bottom: 0.3em; text-align: center; font-size: small;">Purpose in visiting the campus:</div>
+                <div style = "width: 90%; margin-left: auto; margin-right: auto; margin-top: 0.8em;"><input class = "input-purpose" type = "text" id = "purpose" name = "purpose"></div>
+            </div>
+            <div class = "subtext">Now, <%- user.first_name %>, please answer the form <i><b>with complete honesty.</b></i></div>
+            <br>
+
+        <!--HEADACHE STARTS HERE-->
+            <fieldset class = "field">
+                <legend class = "field-name">Headache</legend>
+                <label for="headache">Do you have a headache?</label>
+                    <select class = "input" id = "headache" name = "headache">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+
+                    <fieldset id="yesField" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                        <div class = "subfield">
+                        <legend class = "sub-name">Severity & Duration</legend>
+                        <label for="severityheadache">How terrible is it?</label><br>
+                        
+
+                        <div class = "slider-field">
+                            <div>1</div>
+                            <input class = "input-slider" type = "range" min = "1" max = "5" value = "0" steps = "1" name = "severityheadache">
+                            <div>5</div>
+                        </div>
+
+                        <label for="durationheadache">You have it already for:</label>
+                        <select class = "input" id="durationheadache" name="durationheadache">
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="1">Less than a day</option>
+                            <option value="2">More than 3 days</option>
+                            <option value="3">More than 7 days</option>
+                            <option value="4">More than 14 days</option>
+                            <option value="5">More than 21 days</option>
+                            <option value="6">More than 30 days</option>
+                        </select> 
+                    </fieldset>
+            </fieldset>
+        <!--HEADACHE ENDS HERE-->
+
+        <!--BACKUP FOR OLD STYLE OF FIELDSET-->
+        <!-- <fieldset class = "field">
+            <legend class = "field-name">Headache</legend>
+            <label for="headache">Do you have a headache?</label>
+                <select class = "input" id = "headache" name = "headache">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <fieldset id="yesField" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity</legend>
+                    <label for="severity-headache">Please Specify your headache's severity on a scale of 1-5.</label><br>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <input type="radio" name = "severityheadache" id="1" value="1"/><label for="1">1</label>
+                            </td>
+                            <td>
+                                <input type="radio" name = "severityheadache" id="2" value="2"/><label for="2">2</label>
+                            </td>
+                            <td>
+                                <input type="radio" name = "severityheadache" id="3" value="3"/><label for="3">3</label>
+                            </td>
+                            <td>
+                                <input type="radio" name = "severityheadache" id="4" value="4"/><label for="4">4</label>
+                            </td>
+                            <td>
+                                <input type="radio" name = "severityheadache" id="5" value="5"/><label for="5">5</label><br>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+
+                    <legend class = "sub-name">Duration [in Days]</legend>
+                    <label for="duration-headache">You have it already for:</label><br>
+                    <select class = "input" id="duration-headache" name="durationheadache">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="<=1">Less than a day [1=>]</option>
+                        <option value=">=3">More than 3 days [>=3]</option>
+                        <option value=">=7">More than 7 days [>=7]</option>
+                        <option value=">=14">More than 14 days [>=14]</option>
+                        <option value=">=21">More than 21 days [>=21]</option>
+                        <option value=">=30">More than 30 days [>=30]</option>
+                    </select> 
+                </fieldset>
+        </fieldset> -->
+
+
+        <!--NASAL CONGESTION STARTS HERE-->
+            <fieldset class = "field">
+                <legend class = "field-name">Nasal Congestion</legend>
+                <label for="nasal-congestion">Do you have a nasal congestion?</label>
+                    <select class = "input" id = "nasal-congestion" name = "nasalcongestion">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+
+                    <fieldset id="yes1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                        <div class = "subfield">
+                        <legend class = "sub-name">Severity & Duration</legend>
+                        <label for="severitynasalcongestion">How terrible is it?</label>
+
+                        <div class = "slider-field">
+                            <div>1</div>
+                            <input class = "input-slider" type = "range" min = "1", max = "5" value = "0" steps = "1" name = "severitynasalcongestion">
+                            <div>5</div>
+                        </div>
+
+                        <label for="durationnasalcongestion">You have it already for:</label>
+                        <select class = "input" id="durationnasalcongestion" name="durationnasalcongestion">
+                            <option disabled selected value> -- select an option -- </option>
+                            <option value="1">Less than a day</option>
+                            <option value="2">More than 3 days</option>
+                            <option value="3">More than 7 days</option>
+                            <option value="4">More than 14 days</option>
+                            <option value="5">More than 21 days</option>
+                            <option value="6">More than 30 days</option>
+                        </select> 
+                    </fieldset>
+            </fieldset>
+        <!--NASAL CONGESTION ENDS HERE-->
+
+
+        <!--SORE THROAT STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Sore Throat</legend>
+            <label for="sorethroat">Do you have a sore throat?</label>
+                <select class = "input" id = "sore-throat" name = "sorethroat">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes2Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitysorethroat">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitysorethroat">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationsorethroat">You have it already for:</label>
+                    <select class = "input" id="durationsorethroat" name="durationsorethroat">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--SORE THROAT ENDS HERE-->
+
+
+        <!--COUGH STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Cough</legend>
+            <label for="cough">Do you have a cough?</label>
+                <select class = "input" id = "cough" name = "cough">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes3Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitycough">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitycough">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationcough">You have it already for:</label><br>
+                    <select class = "input" id="durationcough" name="durationcough">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--COUGH ENDS HERE-->
+
+
+        <!--NIGHT SWEATS STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Night Sweats</legend>
+            <label for="night-sweats">Do you have a night sweats?</label>
+                <select class = "input" id = "night-sweats" name = "nightsweats">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes4Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity</legend>
+                    <label for="severitynightsweats">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitynightsweats">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationnightsweats">You have it already for:</label>
+                    <select class = "input" id="durationnightsweats" name="durationnightsweats">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--NIGHT SWEATS ENDS HERE-->
+
+
+        <!--CHEST PAIN STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Chest Pain</legend>
+            <label for="chest-pain">Do you have a chest pain?</label>
+                <select class = "input" id = "chest-pain" name = "chestpain">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes5Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severity-chest-pain">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitychestpain">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationchestpain">You have it already for:</label>
+                    <select class = "input" id="durationchestpain" name="durationchestpain">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--CHEST PAIN ENDS HERE-->
+
+
+        <!--DIFFICULTY / SHORTNESS IN BREATHING STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Breathing Difficulty</legend>
+            <label for="difficulty-breathing">Do you have difficulty / shortness in breathing?</label>
+                <select class = "input" id = "difficulty-breathing" name = "difficultybreathing">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes6Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitydifficultybreathing">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitydifficultybreathing">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationdifficultybreathing">You have it already for:</label>
+                    <select class = "input" id="durationdifficultybreathing" name="durationdifficultybreathing">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--DIFFICULTY / SHORTNESS IN BREATHING ENDS HERE-->
+
+
+        <!--LOSS OF APPETITE STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Loss of Appetite</legend>
+            <label for="loss-of-appetite">Do you have appetite loss?</label>
+                <select class = "input" id = "loss-of-appetite" name = "lossofappetite">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes7Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitylossofappetite">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitylossofappetite">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationlossofappetite">You have it already for:</label>
+                    <select class = "input" id="durationlossofappetite" name="durationlossofappetite">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--LOSS OF APPETITE ENDS HERE-->
+
+
+        <!--UNEXPLAINED WEIGHT LOSS STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Unexplained Weight Loss</legend>
+            <label for="weight-loss">Do you have unexplained weight loss?</label>
+                <select class = "input" id = "weight-loss" name = "weightloss">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes8Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severityweightloss">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severityweightloss">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationweightloss">You have it already for:</label>
+                    <select class = "input" id="durationweightloss" name="durationweightloss">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--UNEXPLAINED WEIGHT LOSS ENDS HERE-->
+
+
+        <!--NAUSEA STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Nausea</legend>
+            <label for="nausea">Do you have nausea?</label>
+                <select class = "input" id = "nausea" name = "nausea">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes9Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severity-nausea">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitynausea">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationnausea">You have it already for:</label>
+                    <select class = "input" id="durationnausea" name="durationnausea">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--NAUSEA ENDS HERE-->
+
+
+        <!--VOMITING STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Vomiting</legend>
+            <label for="vomiting">Do you experience vomiting?</label>
+                <select class = "input" id = "vomiting" name = "vomiting">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes10Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severityvomiting">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severityvomiting">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationvomiting">You have it already for:</label>
+                    <select class = "input" id="durationvomiting" name="durationvomiting">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--VOMITING ENDS HERE-->
+
+
+        <!--DIARRHEA STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Diarrhea</legend>
+            <label for="diarrhea">Do you have diarrhea?</label>
+                <select class = "input" id = "diarrhea" name = "diarrhea">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes11Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitydiarrhea">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitydiarrhea">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationdiarrhea">You have it already for:</label>
+                    <select class = "input" id="durationdiarrhea" name="durationdiarrhea">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--DIARRHEA ENDS HERE-->
+
+
+        <!--MUSCLE / BODY ACHES STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Muscle / Body Aches</legend>
+            <label for="body-aches">Do you have muscle or body aches?</label>
+                <select class = "input" id = "body-aches" name = "bodyaches">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes12Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severitybodyaches">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severitybodyaches">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationbodyaches">You have it already for:</label>
+                    <select class = "input" id="durationbodyaches" name="durationbodyaches">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--MUSCLE / BODY ACHES ENDS HERE-->
+
+
+        <!--FATIGUE STARTS HERE-->
+        <fieldset class = "field">
+            <legend class = "field-name">Fatigue</legend>
+            <label for="fatigue">Do you have fatigue?</label>
+                <select class = "input" id = "fatigue" name = "fatigue">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <fieldset id="yes13Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <div class = "subfield">
+                    <legend class = "sub-name">Severity & Duration</legend>
+                    <label for="severityfatigue">How terrible is it?</label>
+
+                    <div class = "slider-field">
+                        <div>1</div>
+                        <input class = "input-slider" type = "range" min = "1", max = "5" steps = "1" name = "severityfatigue">
+                        <div>5</div>
+                    </div>
+
+                    <label for="durationfatigue">You have it already for:</label>
+                    <select class = "input" id="durationfatigue" name="durationfatigue">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">Less than a day</option>
+                        <option value="2">More than 3 days</option>
+                        <option value="3">More than 7 days</option>
+                        <option value="4">More than 14 days</option>
+                        <option value="5">More than 21 days</option>
+                        <option value="6">More than 30 days</option>
+                    </select> 
+                </fieldset>
+        </fieldset>
+        <!--FATIGUE ENDS HERE-->
+
+        <div class = "have-contact">Do you have any contact with viral respitory-ailed persons [such as COVID-19, TB, Influenza, Common Colitis, etc.] or have you travelled to places infected by viral respiratory diseases?</div>
+        <select class = "input" id="contact" name="contacttracing">
+            <option disabled selected value> -- select an option -- </option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <button class="ques-button" type="submit">Create QR Code!</button>
+        </form>
+        <div class = "banner-bottom"></div>
+    </main>
+
+    <script src="/formexpanders.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

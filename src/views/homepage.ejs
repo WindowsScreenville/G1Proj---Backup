@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <title>Dashboard - BISU MC Contact Tracing System</title>
+</head>
+<body>
+    <main>
+        <div class = "banner-top"></div>
+        <div class = "logo-header">
+            <div class = "logo"></div>
+            <div class = "subtext-header">Welcome to</div>
+            <div class = "title">BISU Main Campus Contact Tracing System!</div>
+        </div>
+
+        <!-- QR Code Display -->
+        <div class = "qr-display" id = "qr-display">
+            <div class = "text-in-qr"><%- user.first_name %>,
+            <div style = "margin-top: -0.3em; font-size: smaller; font-weight: normal; ">Your QR code is valid for</div>
+            </div>
+            
+<!-- 
+            <div class = "subtext" style = "margin-top: 1em;">The code is valid for </div> -->
+                <div id = "countdown" class = "countdown-area">
+                    <div><div id = "hours">00</div><div class = "countdown-label">hr</div></div>
+                    <div>:</div>
+                    <div><div id = "minutes">00</div><div class = "countdown-label">min</div></div>
+                    <div>:</div>
+                    <div><div id = "seconds">00</div><div class = "countdown-label">sec</div></div>
+                </div>
+                
+            <% if (user.qrcode !== "") {%>
+                        <div>
+                            <img src = "<%- user.qrcode %>" class = "qr-area">    
+                        </div>   
+                <% } %>
+
+                
+        </div>
+
+        <div class = "tosurvey-display" id = "tosurvey-display">
+            <div class = "image-nosurvey"></div>
+            <div style = "color: black; font-weight: 700; padding-left: 1.5em; padding-right: 1.5em; margin-bottom: 1.5em;"><%- user.first_name %>, <%- user.message %></div>
+            <div class = "text-without-qr">
+                <div class = "subtext" id = "subtext">Fill up contact tracing form to have one.</div>
+                <button type="button" onclick="location.href='/fillup' " class="answer-button" id = "answer-button"> Answer the Form</button> 
+            </div>
+            
+        </div>
+
+        <nav class="menu">
+            <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+            <label class="menu-open-button" for="menu-open"> 
+                <span class="lines line-1"></span> 
+                <span class="lines line-2"></span> 
+                <span class="lines line-3"></span> 
+            </label>
+
+            <a class="menu-item"> 
+                <form method = "POST" action = "/logout">
+                    <button class = "item-1"></button>
+                </form>
+            </a>
+            <a class="menu-item"> 
+                <form>
+                    <button class = "item-2"></button>
+                </form>
+            </a>
+
+        </nav>
+        <br><br>
+        <div class = "banner-bottom"></div>
+    </main>
+    <script>
+ 
+        var signal = "<%- user.signal %>";
+        if (signal == 1) {
+            console.log("ONE...");
+
+            document.getElementById("tosurvey-display").style.display = "none";
+            let dateobj = new Date ();
+            var timetoday = new Date (dateobj.getTime());
+            
+            let expiration = "<%- user.code_expire %>";
+
+            var remainingtime = (Date.parse(expiration) - Date.parse(timetoday)) / 1000;
+            console.log(remainingtime);
+
+            const hrs = document.getElementById("hours");
+            const mins = document.getElementById("minutes");
+            const secs = document.getElementById("seconds");
+            const text = document.getElementById("text");
+
+            setInterval(updateCountdown, 1000);
+
+            function updateCountdown () {
+                
+                let hours = Math.floor((remainingtime / 3600));
+                
+                let minutes = Math.floor((remainingtime / 60) % 60);
+                let seconds = remainingtime % 60;
+                hours = hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+                minutes = minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+                seconds = seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+
+                if (remainingtime < 0)
+                {
+                    console.log("NAHUROT NA...");
+                    document.getElementById("qr-display").style.display = "none";
+                    document.getElementById("tosurvey-display").style.display = "";
+
+                    text.innerHTML = "<%- user.first_name %>, Your QR Code has expired!";
+                }
+                
+                else {
+                    console.log("NAA PAY TIME...");
+                    hrs.innerHTML = `${hours}`;
+                    mins.innerHTML = `${minutes}`;
+                    secs.innerHTML = `${seconds}`;
+                    remainingtime--;
+                }
+            }
+        }
+
+        else {
+            console.log("DILI KO ONE");
+            document.getElementById("qr-display").style.display = "none";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
