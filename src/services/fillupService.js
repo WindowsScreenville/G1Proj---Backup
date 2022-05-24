@@ -12,14 +12,14 @@ let saveDataCreateQRCode = (data) => {
             }
 
             else {
-                let accountid = createAccountID(data.username);
-                let qrcode = await createQRCode(accountid);
+                let account_id = createAccountID(data.username);
+                let qrcode = await createQRCode(account_id);
 
                 let formdata = {
                     // qrcode: qrcode,
-                    // username: data.username,
-                    accountid: accountid,
-                    temperature: 37,
+                    username: data.username,
+                    account_id: account_id,
+                    temperature: 3,
                     headache: data.headache,
                     severityheadache: data.severityheadache,
                     durationheadache: data.durationheadache,
@@ -86,7 +86,7 @@ let saveDataCreateQRCode = (data) => {
                 console.log("MAO NI GIINPUT NGA VALUES:");
                 console.log(formdata);
 
-                db.query("INSERT INTO form_data SET ?",  {account_id: formdata.accountid, temperature: formdata.temperature,
+                db.query("INSERT INTO form_data SET ?",  {username: formdata.username, account_id: formdata.account_id, temperature: formdata.temperature,
                     headache_positive: formdata.headache, headache_severity: formdata.severityheadache, headache_duration: formdata.durationheadache,
                     congestion_positive: formdata.nasalcongestion, congestion_severity: formdata.severitynasalcongestion, congestion_duration: formdata.durationnasalcongestion,
                     sorethroat_positive: formdata.sorethroat, sorethroat_severity: formdata.severitysorethroat, sorethroat_duration: formdata.durationsorethroat,
@@ -110,7 +110,7 @@ let saveDataCreateQRCode = (data) => {
 
                 let qrcode_data = {
                     username: data.username,
-                    accountid: accountid,
+                    account_id: account_id,
                     qrcode: qrcode,
                     code_start: getTimeToday(),
                     code_expire: getExpirationTime(),
@@ -118,7 +118,7 @@ let saveDataCreateQRCode = (data) => {
 
                 }
 
-                db.query("INSERT INTO qrcode SET ?",  {username: qrcode_data.username, account_id: qrcode_data.accountid, qrcode: qrcode_data.qrcode,
+                db.query("INSERT INTO qrcode SET ?",  {username: qrcode_data.username, account_id: qrcode_data.account_id, qrcode: qrcode_data.qrcode,
                     code_start: qrcode_data.code_start, code_expire: qrcode_data.code_expire, purpose: qrcode_data.purpose}, function(error, rows) {
                     if (error) {
                         console.log(error);
@@ -163,9 +163,9 @@ let saveDataCreateQRCode = (data) => {
     });
 };
 
-let createQRCode = async (accountid) => {
+let createQRCode = async (account_id) => {
     try {   
-        return QRCode.toDataURL(accountid);
+        return QRCode.toDataURL(account_id);
     }
 
     catch (err) {

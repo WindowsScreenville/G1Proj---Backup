@@ -19,30 +19,41 @@
             <div class = "title">BISU Main Campus Contact Tracing System!</div>
         </div>
 
-        <!-- QR Code Display -->
-        <div class = "qr-display" id = "qr-display">
-            <div class = "text-in-qr"><%- user.first_name %>,
-            <div style = "margin-top: -0.3em; font-size: smaller; font-weight: normal; ">Your QR code is valid for</div>
-            </div>
-            
-<!-- 
-            <div class = "subtext" style = "margin-top: 1em;">The code is valid for </div> -->
-                <div id = "countdown" class = "countdown-area">
-                    <div><div id = "hours">00</div><div class = "countdown-label">hr</div></div>
-                    <div>:</div>
-                    <div><div id = "minutes">00</div><div class = "countdown-label">min</div></div>
-                    <div>:</div>
-                    <div><div id = "seconds">00</div><div class = "countdown-label">sec</div></div>
+        <div>
+            <!-- QR Code Display --> 
+            <div class = "qr-display" id = "qr-display">
+                <div class = "text-in-qr" id = "text-in-qr"><%- user.first_name %> <%- user.last_name %>,
+                <div style = "margin-top: -0.3em; font-size: smaller; font-weight: normal; ">Your QR code is valid for</div>
                 </div>
                 
-            <% if (user.qrcode !== "") {%>
-                        <div>
-                            <img src = "<%- user.qrcode %>" class = "qr-area">    
-                        </div>   
-                <% } %>
+    <!-- 
+                <div class = "subtext" style = "margin-top: 1em;">The code is valid for </div> -->
+                    <div id = "countdown" class = "countdown-area">
+                        <div><div id = "hours">00</div><div class = "countdown-label">hr</div></div>
+                        <div>:</div>
+                        <div><div id = "minutes">00</div><div class = "countdown-label">min</div></div>
+                        <div>:</div>
+                        <div><div id = "seconds">00</div><div class = "countdown-label">sec</div></div>
+                    </div>
+                    
+                <% if (user.qrcode !== "") {%>
+                            <div>
+                                <img src = "<%- user.qrcode %>" class = "qr-area">    
+                            </div>   
+                    <% } %>
 
-                
+                    
+            </div>   
+            
+            <div class = "change-qrcode" id = "changeqrcode">
+                Want to change your QR Code?
+                    <a onclick="location.href='/changeqrcode'">
+                        <input type = "submit" class = "change-button" value = "Have another one here." id = "change"> 
+                    </a>
+            </div> 
         </div>
+        
+
 
         <div class = "tosurvey-display" id = "tosurvey-display">
             <div class = "image-nosurvey"></div>
@@ -50,8 +61,7 @@
             <div class = "text-without-qr">
                 <div class = "subtext" id = "subtext">Fill up contact tracing form to have one.</div>
                 <button type="button" onclick="location.href='/fillup' " class="answer-button" id = "answer-button"> Answer the Form</button> 
-            </div>
-            
+            </div>   
         </div>
 
         <nav class="menu">
@@ -67,12 +77,11 @@
                     <button class = "item-1"></button>
                 </form>
             </a>
-            <a class="menu-item"> 
+            <!-- <a class="menu-item"> 
                 <form>
                     <button class = "item-2"></button>
                 </form>
-            </a>
-
+            </a> -->
         </nav>
         <br><br>
         <div class = "banner-bottom"></div>
@@ -131,8 +140,10 @@
         else {
             console.log("DILI KO ONE");
             document.getElementById("qr-display").style.display = "none";
+            document.getElementById("changeqrcode").style.display = "none";
         }
     </script>
+    <script src="/changeQRCode.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

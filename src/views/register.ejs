@@ -11,6 +11,7 @@
 </head>
 <body>
     <main>
+        <div class = "banner-top"></div>
         <div class = "logo-header">
             <div class = "logo"></div>
             <div class = "title">Be part of our Contact Tracing System!</div>
@@ -22,7 +23,7 @@
             <div>
                 <% if (errors !== " ") {%>
                     <% errors.forEach(function(item) { %>
-                        <div class = "alert-notif">
+                        <div class = "alert-notif" id = "notif">
                             <%- item %>
                         </div>
                     <% }) %>
@@ -64,14 +65,14 @@
 
             <div class = "hidden" id = "popup-container-student">
                 <p>ID Number:</p>
-                <input type = "number" class = "input" placeholder = "[Ex: 1234]" id = "id_num"> 
+                <input type = "number" class = "input" style= "min-width: 10em; width: 93%;" placeholder = "[Ex: 1234]" id = "stud_id_num" name = "studidnum"> 
                 <p>Course and Year:</p>
-                <input type = "text" class = "input" placeholder = "[Ex: BS CpE-4]" id = "course_year"> 
+                <input type = "text" class = "input" style= "min-width: 10em; width: 93%;" placeholder = "[Ex: BS CpE-4]" id = "course_year_sec" name = "courseyearsec"> 
             </div>
 
             <div class = "hidden" id = "popup-container-employee">
                 <p>Employee ID Number:</p>
-                <input type = "number" class = "input" placeholder = "[Ex: 1234]" id = "emply_id_num"> 
+                <input type = "number" class = "input" style= "min-width: 10em; width: 93%;" placeholder = "[Ex: 1234]" id = "emply_id_num" name = "emplyidnum"> 
             </div>
 
             <p style = "margin-top: 4em;">Enter Password:</p>
@@ -89,7 +90,6 @@
         </div> 
         <div class = "banner-bottom"></div>
     </main>
-
     <script src="/js/signup_popup_controller.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

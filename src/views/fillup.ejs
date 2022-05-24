@@ -16,6 +16,15 @@
         <div class = "logo-header">
             <div class = "logo"></div>
             <div class = "title">Symptom Monitoring Checklist</div>
+            <div>
+                <% if (errors !== " ") {%>
+                    <% errors.forEach(function(item) { %>
+                        <div class = "alert-notif" id = "notif">
+                            <%- item %>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
             <div class = "subtext"><b>PURPOSE OF VISITING:</b> Before you proceed in answering the health assessment form, let us know first your purpose in visiting the campus.</div>
         </div>
 
@@ -24,14 +33,15 @@
             <div class = "purpose">
                 <div style = "color: rgb(182, 181, 181); background-color: rgb(56, 56, 56); border-radius: 2em 2em 0 0; padding-top: 0.3em;
                 padding-bottom: 0.3em; text-align: center; font-size: small;">Purpose in visiting the campus:</div>
-                <div style = "width: 90%; margin-left: auto; margin-right: auto; margin-top: 0.8em;"><input class = "input-purpose" type = "text" id = "purpose" name = "purpose"></div>
+                <div style = "width: auto; padding-left: 1em; padding-right: 1em; padding-top: 1em;"><input class = "input-purpose" type = "text" id = "purpose" name = "purpose"></div>
             </div>
-            <div class = "subtext">Now, <%- user.first_name %>, please answer the form <i><b>with complete honesty.</b></i></div>
+            <div class = "subtext">Now, <%- user.first_name %>, please answer the form <i><b>with complete honesty. </b></i>Please know that upon submitting the form and you are
+                not filling it up completely, <i><b>you will have to re-answer ALL of the fields of the form again.</b></i></div>
             <br>
 
         <!--HEADACHE STARTS HERE-->
             <fieldset class = "field">
-                <legend class = "field-name">Headache</legend>
+                <div class = "symptom-header"><div class = "icon-headache"></div><legend class = "field-name">Headache</legend></div>
                 <label for="headache">Do you have a headache?</label>
                     <select class = "input" id = "headache" name = "headache">
                         <option disabled selected value> -- select an option -- </option>
@@ -39,8 +49,8 @@
                         <option value="0">No</option>
                     </select>
 
-                    <fieldset id="yesField" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
-                        <div class = "subfield">
+                    <fieldset id="yes1-1Field" class = "hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                        <div class = "subfield" id = "subfield">
                         <legend class = "sub-name">Severity & Duration</legend>
                         <label for="severityheadache">How terrible is it?</label><br>
                         
@@ -117,7 +127,7 @@
 
         <!--NASAL CONGESTION STARTS HERE-->
             <fieldset class = "field">
-                <legend class = "field-name">Nasal Congestion</legend>
+                <div class = "symptom-header"><div class = "icon-nasalcongestion"></div><legend class = "field-name">Nasal Congestion</legend></div>
                 <label for="nasal-congestion">Do you have a nasal congestion?</label>
                     <select class = "input" id = "nasal-congestion" name = "nasalcongestion">
                         <option disabled selected value> -- select an option -- </option>
@@ -125,7 +135,7 @@
                         <option value="0">No</option>
                     </select>
 
-                    <fieldset id="yes1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                    <fieldset id="yes2-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                         <div class = "subfield">
                         <legend class = "sub-name">Severity & Duration</legend>
                         <label for="severitynasalcongestion">How terrible is it?</label>
@@ -153,7 +163,7 @@
 
         <!--SORE THROAT STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Sore Throat</legend>
+            <div class = "symptom-header"><div class = "icon-sorethroat"></div><legend class = "field-name">Sore Throat</legend></div>
             <label for="sorethroat">Do you have a sore throat?</label>
                 <select class = "input" id = "sore-throat" name = "sorethroat">
                     <option disabled selected value> -- select an option -- </option>
@@ -161,7 +171,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes2Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes3-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitysorethroat">How terrible is it?</label>
@@ -189,7 +199,7 @@
 
         <!--COUGH STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Cough</legend>
+            <div class = "symptom-header"><div class = "icon-cough"></div><legend class = "field-name">Cough</legend></div>
             <label for="cough">Do you have a cough?</label>
                 <select class = "input" id = "cough" name = "cough">
                     <option disabled selected value> -- select an option -- </option>
@@ -197,7 +207,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes3Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes4-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitycough">How terrible is it?</label>
@@ -225,7 +235,7 @@
 
         <!--NIGHT SWEATS STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Night Sweats</legend>
+            <div class = "symptom-header"><div class = "icon-nightsweats"></div><legend class = "field-name">Night Sweats</legend></div>
             <label for="night-sweats">Do you have a night sweats?</label>
                 <select class = "input" id = "night-sweats" name = "nightsweats">
                     <option disabled selected value> -- select an option -- </option>
@@ -233,7 +243,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes4Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes5-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity</legend>
                     <label for="severitynightsweats">How terrible is it?</label>
@@ -261,7 +271,7 @@
 
         <!--CHEST PAIN STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Chest Pain</legend>
+            <div class = "symptom-header"><div class = "icon-chestpain"></div><legend class = "field-name">Chest Pain</legend></div>
             <label for="chest-pain">Do you have a chest pain?</label>
                 <select class = "input" id = "chest-pain" name = "chestpain">
                     <option disabled selected value> -- select an option -- </option>
@@ -269,7 +279,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes5Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes6-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severity-chest-pain">How terrible is it?</label>
@@ -297,7 +307,7 @@
 
         <!--DIFFICULTY / SHORTNESS IN BREATHING STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Breathing Difficulty</legend>
+            <div class = "symptom-header"><div class = "icon-difficultybreathing"></div><legend class = "field-name">Difficulty in Breathing</legend></div>
             <label for="difficulty-breathing">Do you have difficulty / shortness in breathing?</label>
                 <select class = "input" id = "difficulty-breathing" name = "difficultybreathing">
                     <option disabled selected value> -- select an option -- </option>
@@ -305,7 +315,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes6Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes7-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitydifficultybreathing">How terrible is it?</label>
@@ -333,7 +343,7 @@
 
         <!--LOSS OF APPETITE STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Loss of Appetite</legend>
+            <div class = "symptom-header"><div class = "icon-lossofappetite"></div><legend class = "field-name">Loss of Appetite</legend></div>
             <label for="loss-of-appetite">Do you have appetite loss?</label>
                 <select class = "input" id = "loss-of-appetite" name = "lossofappetite">
                     <option disabled selected value> -- select an option -- </option>
@@ -341,7 +351,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes7Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes8-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitylossofappetite">How terrible is it?</label>
@@ -369,7 +379,7 @@
 
         <!--UNEXPLAINED WEIGHT LOSS STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Unexplained Weight Loss</legend>
+            <div class = "symptom-header"><div class = "icon-weightloss"></div><legend class = "field-name">Unexplained Weight Loss</legend></div>
             <label for="weight-loss">Do you have unexplained weight loss?</label>
                 <select class = "input" id = "weight-loss" name = "weightloss">
                     <option disabled selected value> -- select an option -- </option>
@@ -377,7 +387,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes8Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes9-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severityweightloss">How terrible is it?</label>
@@ -405,7 +415,7 @@
 
         <!--NAUSEA STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Nausea</legend>
+            <div class = "symptom-header"><div class = "icon-nausea"></div><legend class = "field-name">Nausea</legend></div>
             <label for="nausea">Do you have nausea?</label>
                 <select class = "input" id = "nausea" name = "nausea">
                     <option disabled selected value> -- select an option -- </option>
@@ -413,7 +423,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes9Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes10-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severity-nausea">How terrible is it?</label>
@@ -441,7 +451,7 @@
 
         <!--VOMITING STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Vomiting</legend>
+            <div class = "symptom-header"><div class = "icon-vomiting"></div><legend class = "field-name">Vomiting</legend></div>
             <label for="vomiting">Do you experience vomiting?</label>
                 <select class = "input" id = "vomiting" name = "vomiting">
                     <option disabled selected value> -- select an option -- </option>
@@ -449,7 +459,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes10Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes11-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severityvomiting">How terrible is it?</label>
@@ -477,7 +487,7 @@
 
         <!--DIARRHEA STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Diarrhea</legend>
+            <div class = "symptom-header"><div class = "icon-diarrhea"></div><legend class = "field-name">Diarrhea</legend></div>
             <label for="diarrhea">Do you have diarrhea?</label>
                 <select class = "input" id = "diarrhea" name = "diarrhea">
                     <option disabled selected value> -- select an option -- </option>
@@ -485,7 +495,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes11Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes12-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitydiarrhea">How terrible is it?</label>
@@ -513,7 +523,7 @@
 
         <!--MUSCLE / BODY ACHES STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Muscle / Body Aches</legend>
+            <div class = "symptom-header"><div class = "icon-bodyaches"></div><legend class = "field-name">Muscle / Body Aches</legend></div>
             <label for="body-aches">Do you have muscle or body aches?</label>
                 <select class = "input" id = "body-aches" name = "bodyaches">
                     <option disabled selected value> -- select an option -- </option>
@@ -521,7 +531,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes12Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes13-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severitybodyaches">How terrible is it?</label>
@@ -549,7 +559,7 @@
 
         <!--FATIGUE STARTS HERE-->
         <fieldset class = "field">
-            <legend class = "field-name">Fatigue</legend>
+            <div class = "symptom-header"><div class = "icon-fatigue"></div><legend class = "field-name">Fatigue</legend></div>
             <label for="fatigue">Do you have fatigue?</label>
                 <select class = "input" id = "fatigue" name = "fatigue">
                     <option disabled selected value> -- select an option -- </option>
@@ -557,7 +567,7 @@
                     <option value="0">No</option>
                 </select>
 
-                <fieldset id="yes13Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
+                <fieldset id="yes14-1Field" class="hidden" style = "border-style: none; padding: 0em 0em 0em 0em;">
                     <div class = "subfield">
                     <legend class = "sub-name">Severity & Duration</legend>
                     <label for="severityfatigue">How terrible is it?</label>
@@ -588,6 +598,7 @@
             <option value="1">Yes</option>
             <option value="0">No</option>
         </select>
+        
         <button class="ques-button" type="submit">Create QR Code!</button>
         </form>
         <div class = "banner-bottom"></div>

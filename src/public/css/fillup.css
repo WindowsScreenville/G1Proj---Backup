@@ -11,7 +11,7 @@ main {
     font-family: 'Montserrat';
     width: 100%!important;
     height: 100%;
-    background: linear-gradient(#9DCDF6, #B89EFF);
+    background: linear-gradient(#75bfff, #f4ff8f);
 }
 
 main p {
@@ -65,14 +65,36 @@ main label {
     color: #0B3356;
     font-size: larger;
     font-weight: 700;
+    margin-bottom: 1em;
 }
 
 .subtext {
-    margin-top: 2em;
+    width: 90%;
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
     color: white;
     font-size: small;
     font-weight: normal;
     text-align:justify;
+}
+
+.alert-notif {
+    width: 90%;
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.3em;
+    padding: 0.5em 0.9em;
+    text-align: center;
+    font-size: small;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(253, 115, 115);
+    border-radius: 5em;
+    border-style: none;
+    box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
+    margin-bottom: 1.3em;
 }
 
 
@@ -83,13 +105,13 @@ main label {
 }
 
 .purpose {
+    width: 100%;
     border-radius: 2em;
     border-style: none;
     margin-top: 1.3em;
     margin-bottom: 3em;
     padding-bottom: 1em;
     background-color: white;
-
     box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.199);
 }
 
@@ -97,7 +119,7 @@ main label {
     font-family: 'Montserrat';
     color: #5a5a5a;
     background-color: white;
-    width: 100%;
+    width: 95%;
     height: 2em;
     padding-left: 0.8em;
     padding-right: 0.8em;
@@ -195,12 +217,156 @@ main label {
     font-weight: normal;
 }
 
+.symptom-header {
+    display: flex;
+}
+
 .field-name {
     font-weight: 700;
     font-size: larger;
-    padding-left: 0.3em;
+    padding-left: 0.2em;
     padding-right: 0.3em;
     color: #0B3356;
+}
+
+.icon-headache {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/headache.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-nasalcongestion {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/nasalcongestion.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-sorethroat {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/throat.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-cough {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/cough.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-nightsweats {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/droplets.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-chestpain {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/chest.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-difficultybreathing {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/breath.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-lossofappetite {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/meal.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-weightloss {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/slim.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-nausea {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/nausea.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-vomiting {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/vomiting.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-diarrhea{
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/diarrhea.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-bodyaches {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/painpoints.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+}
+
+.icon-fatigue {
+    width: 1.6em;
+    height: 1.6em;
+    background-image: url("../images/fatigue.png");
+    background-size: 1.7em;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
 }
 
 .sub-name {

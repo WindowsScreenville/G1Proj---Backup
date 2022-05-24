@@ -26,12 +26,15 @@ let createNewUser = (user) => {
                     birthday: user.birthday,
                     address: user.address,
                     mobilenum: user.mobilenum,
-                    kind: user.kind
+                    kind: user.kind,
+                    studidnum: user.studidnum,
+                    courseyearsec: user.courseyearsec,
+                    emplyidnum: user.emplyidnum
                 }
                 console.log(data.username);
                 console.log(data.password);
 
-                db.query("INSERT INTO users SET ?",  {username: data.username, password: data.password, first_name: data.firstname, middle_name: data.middlename, last_name: data.lastname, extension: data.extension, sex: data.sex, age: data.age, birthday: data.birthday, home_address: data.address, mobile_number: data.mobilenum, user_type: data.kind}, function(error, rows) {
+                db.query("INSERT INTO users SET ?",  {username: data.username, password: data.password, first_name: data.firstname, middle_name: data.middlename, last_name: data.lastname, extension: data.extension, sex: data.sex, age: data.age, birthday: data.birthday, home_address: data.address, mobile_number: data.mobilenum, user_type: data.kind, student_id: data.studidnum, course_year_sec: data.courseyearsec, employee_id: data.emplyidnum}, function(error, rows) {
                     if (error) {
                         reject(error);
                     }

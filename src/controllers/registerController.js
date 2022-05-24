@@ -7,11 +7,13 @@ let getRegisterPage = (req, res) => {
     });
 };
 
+var errorsArr = [];
+
 let createNewUser = async(req, res) => {
     console.log(req.body);
 
     // Validate all the required fields
-    let errorsArr = [];
+    errorsArr = [];
     let validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
         let errors = Object.values(validationErrors.mapped());
@@ -23,7 +25,33 @@ let createNewUser = async(req, res) => {
         return res.redirect("/register");
     }
 
-    // Create a new user
+    //FIX BLANK FIELDS [E.G., STUDENT ID, COURSE AND YEAR, EMPLOYEE ID]
+    if (req.body.studidnum == "") {
+        var studidnum = req.body.studidnum;
+    }
+
+    else {
+        var studidnum = "N/A";
+    }
+
+    if (req.body.courseyearsec == "") {
+        var courseyearsec = req.body.courseyearsec;
+    }
+
+    else {
+        var courseyearsec = "N/A";
+    }
+
+    if (req.body.emplyidnum == "") {
+        var emplyidnum = req.body.emplyidnum;
+    }
+
+    else {
+        var emplyidnum = "N/A";
+    }
+
+
+    // CREATE NEW USER
     try {
         let newUser = {
             firstname: req.body.firstname,
@@ -37,9 +65,14 @@ let createNewUser = async(req, res) => {
             address: req.body.address,
             mobilenum: req.body.mobilenum,
             kind: req.body.kind,
+            studidnum: studidnum,
+            courseyearsec: courseyearsec,
+            emplyidnum: emplyidnum,
             password: req.body.password,
             confirmpassword: req.body.confirmpassword
         };
+
+
         
         let message = await registerService.createNewUser(newUser);
         console.log("Message: " + message);
@@ -56,5 +89,6 @@ let createNewUser = async(req, res) => {
 
 module.exports = {
     getRegisterPage: getRegisterPage,
-    createNewUser: createNewUser
+    createNewUser: createNewUser,
+    errorsArr: errorsArr
 };

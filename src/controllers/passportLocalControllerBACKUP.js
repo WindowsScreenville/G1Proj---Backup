@@ -4,7 +4,6 @@ import loginService from "../services/loginService";
 import adminloginService from "../services/adminloginService";
 import qrcodehide from "../public/qrcodehide";
 
-
 let LocalStrategy = passportLocal.Strategy;
 
 var QRCodeService = require("../services/QRCodeService");
@@ -27,7 +26,7 @@ let initPassportLocal = () => {
                         let match = await loginService.comparePassword(password, user2);
                         if (match === true) {
                             var qrcode_data = await QRCodeService.checkForQRCode(user2.username);
-                            // console.log(qrcode_data);
+                            console.log(qrcode_data);
                             if (qrcode_data)
                             {
                                 var timeremaining = qrcode_data.code_expire - timetoday.getTimeToday();
@@ -35,7 +34,8 @@ let initPassportLocal = () => {
                                 if (timeremaining <= 0) {
                                     console.log("EXPIRE NA IYANG QR CODE...");
                                     var message = "your QR Code has expired!"
-                                    var user = Object.assign({}, user2, {message});
+                                    var notif = {message};
+                                    var user = Object.assign({}, user2, notif);
                                     return done(null, user, null);
                                 }
 
@@ -43,7 +43,6 @@ let initPassportLocal = () => {
                                     var signal = 1;
                                     timeremaining = timeremaining / 60;
                                     var user = Object.assign({}, user2, qrcode_data, {signal, timeremaining});
-                                    // console.log(user);
                                     return done(null, user, null);
                                     // return done(null, user, req.flash("qrcode", qrcode_data.qrcode));
                                 }
@@ -53,9 +52,9 @@ let initPassportLocal = () => {
                             else {
                                 console.log("WALAY QR CODE...");
                                 var message = "you have no valid QR Code."
-                                var user = Object.assign({}, user2, {message});
-                                console.log(user);
-                                return done(null, user, null);    
+                                var notif = {message};
+                                var user = Object.assign({}, user2, notif);
+                                return done(null, user, null);
                             }
                             
                         } else {
@@ -105,19 +104,15 @@ let initPassportLocal = () => {
  
 };
 
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-
 // passport.serializeUser((user, done) => {
-//         var key = {
-//             id: user.id,
-//             type: user.userType
-//         }
-//         done(null, key);
+//     done(null, user);
 // });
 
-passport.deserializeUser((user, done) => {
+passport.serializeUser((user, done) => {
+        done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
     done(null, user);
   });
 

@@ -1,10 +1,12 @@
 import fillupService from "../services/fillupService";
+import homePageController, { getHomePage } from "./homePageController";
+import {validationResult} from "express-validator";
 
 var index;
 let getFillupPage = (req, res) => {
     var a = req.user;
     index = a;
-    return  res.render("fillup",{user: req.user
+    return  res.render("fillup",{user: req.user, errors: req.flash("errors")
     })};
 
 
@@ -12,21 +14,21 @@ let fillup = async(req, res) => {
 
     // Validate all the required fields
 
-    // let errorsArr = [];
-    // let validationErrors = validationResult(req);
-    // if (!validationErrors.isEmpty()) {
-    //     let errors = Object.values(validationErrors.mapped());
-    //     errors.forEach((item) => {
-    //         errorsArr.push(item.msg);
-    //     });
+    let errorsArr = [];
+    let validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+        let errors = Object.values(validationErrors.mapped());
+        errors.forEach((item) => {
+            errorsArr.push(item.msg);
+        });
 
-    //     req.flash("errors", errorsArr);
-    //     return res.redirect("/register");
-    // }
+        req.flash("errors", errorsArr);
+        return res.redirect("/fillup");
+    }
 
 
     // NULLIFY NON TRUE FIELDS
-    if (req.body.headache == "yes") {
+    if (req.body.headache == 1) {
         var severity_headache = req.body.severityheadache;
         var duration_headache = req.body.durationheadache;
     }
@@ -36,7 +38,7 @@ let fillup = async(req, res) => {
         var duration_headache = 0;
     }
 
-    if (req.body.nasalcongestion == "yes") {
+    if (req.body.nasalcongestion == 1) {
         var severity_nasalcongestion = req.body.severitynasalcongestion;
         var duration_nasalcongestion = req.body.durationnasalcongestion;
     }
@@ -46,7 +48,7 @@ let fillup = async(req, res) => {
         var duration_nasalcongestion = 0;
     }
 
-    if (req.body.sorethroat == "yes") {
+    if (req.body.sorethroat == 1) {
         var severity_sorethroat = req.body.severitysorethroat;
         var duration_sorethroat = req.body.durationsorethroat;
     }
@@ -56,7 +58,7 @@ let fillup = async(req, res) => {
         var duration_sorethroat = 0;
     }
 
-    if (req.body.cough == "yes") {
+    if (req.body.cough == 1) {
         var severity_cough = req.body.severitycough;
         var duration_cough = req.body.durationcough;
     }
@@ -66,7 +68,7 @@ let fillup = async(req, res) => {
         var duration_cough = 0;
     }
 
-    if (req.body.nightsweats == "yes") {
+    if (req.body.nightsweats == 1) {
         var severity_nightsweats = req.body.severitynightsweats;
         var duration_nightsweats = req.body.durationnightsweats;
     }
@@ -76,7 +78,7 @@ let fillup = async(req, res) => {
         var duration_nightsweats = 0;
     }
 
-    if (req.body.chestpain == "yes") {
+    if (req.body.chestpain == 1) {
         var severity_chestpain = req.body.severitychestpain;
         var duration_chestpain = req.body.durationchestpain;
     }
@@ -86,7 +88,7 @@ let fillup = async(req, res) => {
         var duration_chestpain = 0;
     }
 
-    if (req.body.difficultybreathing == "yes") {
+    if (req.body.difficultybreathing == 1) {
         var severity_difficultybreathing = req.body.severitydifficultybreathing;
         var duration_difficultybreathing = req.body.durationdifficultybreathing;
     }
@@ -96,7 +98,7 @@ let fillup = async(req, res) => {
         var duration_difficultybreathing = 0;
     }
 
-    if (req.body.lossofappetite == "yes") {
+    if (req.body.lossofappetite == 1) {
         var severity_lossofappetite = req.body.severitylossofappetite;
         var duration_lossofappetite = req.body.durationlossofappetite;
     }
@@ -106,7 +108,7 @@ let fillup = async(req, res) => {
         var duration_lossofappetite = 0;
     }
 
-    if (req.body.weightloss == "yes") {
+    if (req.body.weightloss == 1) {
         var severity_weightloss = req.body.severityweightloss;
         var duration_weightloss = req.body.durationweightloss;
     }
@@ -116,7 +118,7 @@ let fillup = async(req, res) => {
         var duration_weightloss = 0;
     }
 
-    if (req.body.nausea == "yes") {
+    if (req.body.nausea == 1) {
         var severity_nausea = req.body.severitynausea;
         var duration_nausea = req.body.durationnausea;
     }
@@ -126,7 +128,7 @@ let fillup = async(req, res) => {
         var duration_nausea = 0;
     }
 
-    if (req.body.vomiting == "yes") {
+    if (req.body.vomiting == 1) {
         var severity_vomiting = req.body.severityvomiting;
         var duration_vomiting = req.body.durationvomiting;
     }
@@ -136,7 +138,7 @@ let fillup = async(req, res) => {
         var duration_vomiting = 0;
     }
 
-    if (req.body.diarrhea == "yes") {
+    if (req.body.diarrhea == 1) {
         var severity_diarrhea = req.body.severitydiarrhea;
         var duration_diarrhea = req.body.durationdiarrhea;
     }
@@ -146,7 +148,7 @@ let fillup = async(req, res) => {
         var duration_diarrhea = 0;
     }
 
-    if (req.body.bodyaches == "yes") {
+    if (req.body.bodyaches == 1) {
         var severity_bodyaches = req.body.severitybodyaches;
         var duration_bodyaches = req.body.durationbodyaches;
     }
@@ -156,7 +158,7 @@ let fillup = async(req, res) => {
         var duration_bodyaches = 0;
     }
 
-    if (req.body.fatigue == "yes") {
+    if (req.body.fatigue == 1) {
         var severity_fatigue = req.body.severityfatigue;
         var duration_fatigue = req.body.durationfatigue;
     }
@@ -231,12 +233,22 @@ let fillup = async(req, res) => {
         }
 
 
-        var user = await fillupService.saveDataCreateQRCode(formresponses);
+        var data = await fillupService.saveDataCreateQRCode(formresponses);
+        var signal = 1;
+        var user = Object.assign({}, data, {signal});
         console.log("VALUES OF USER:");
         console.log(user);
         // req.flash("qrcode_data", qrcode_data.qrcode);
-        // return res.redirect("/", done(null, qrcode_data, null));
-        return res.render("homepage.ejs", {user});
+        // return res.redirect("/", done(null, user, null));
+        // return res.render("homepage.ejs", {user});
+
+        // return res.render("homepage.ejs", {
+        //     user: user, qrcode: user.qrcode
+        //     });
+        // req.user.push(data, {signal});
+        
+        req.user = Object.assign({}, data, {signal});
+        getHomePage(req, res);
     }
 
     catch (e) {
